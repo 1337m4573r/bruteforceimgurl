@@ -117,13 +117,13 @@ if (isset($_POST['url']) AND (strlen($_POST['url']) > 0) AND isset($minDigitsLen
                 // $matches2[2] - last part of the number (at least 1 char) will be used as placeholder
                 $url[0] = $matches[1] . $matches2[1];
                 $url[1] = $matches[3];
-                $minDigitsLength = $digits;
+                $minDigitsLength = ($minDigitsLength == 0) ? 0 : $digits;
             } else {
                 //example: .../img749.jpg -> 749, but we want from 950 to 1030
                 // so url becomes .../img|.jpg, generating img950.jpg to img1030.jpg
                 $url[0] = $matches[1];
                 $url[1] = $matches[3];
-                $minDigitsLength = $numlen;
+                $minDigitsLength = ($minDigitsLength == 0) ? 0 : $numlen;
             }
         }
     }
